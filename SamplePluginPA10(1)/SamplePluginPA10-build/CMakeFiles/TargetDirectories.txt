@@ -1,0 +1,3 @@
+/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles/edit_cache.dir
+/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles/rebuild_cache.dir
+/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles/RoVi1PluginPA10.dir
