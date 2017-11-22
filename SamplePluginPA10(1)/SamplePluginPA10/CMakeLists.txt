@@ -23,9 +23,10 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Use c++11
 #SET(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
-
+SET(RobWorkStudio_DIR ${RWSTUDIO_ROOT}/cmake) # use on virtual machine
 # Used to resolve absolute path names
 SET(ROOT ${CMAKE_CURRENT_SOURCE_DIR})
+MESSAGE("-- pwd " ${CMAKE_CURRENT_SOURCE_DIR})
 
 # Set the level of verbosity when running make
 set(CMAKE_VERBOSE_MAKEFILE False)
@@ -34,6 +35,7 @@ set(CMAKE_VERBOSE_MAKEFILE False)
 SET(RW_ROOT $ENV{RW_ROOT})
 MESSAGE("-- RobWork INV: " $ENV{RW_ROOT})
 SET(RWSTUDIO_ROOT $ENV{RWS_ROOT})
+MESSAGE("-- RobWorkStuido INV: " $ENV{RWS_ROOT})
 
 # Set build type to release
 IF( NOT CMAKE_BUILD_TYPE )
@@ -42,7 +44,7 @@ ENDIF()
 MESSAGE("-- Build type: " ${CMAKE_BUILD_TYPE})
 
 # Use RobWork
-#SET(RobWork_DIR /home/per/RobWork/RobWork//cmake) # use on own machine
+#SET(RobWork_DIR /home/per/RobWork/RobWork)#//cmake) # use on own machine
 SET(RobWork_DIR ${RW_ROOT}/cmake) # use on virtual machine
 MESSAGE("-- RobWork root: " ${RW_ROOT})
 FIND_PACKAGE(RobWork REQUIRED)
@@ -51,14 +53,14 @@ LINK_DIRECTORIES( ${ROBWORK_LIBRARY_DIRS} )
 
 # Use RobWorkStudio
 MESSAGE("-- RobWorkStudio root: " ${RWSTUDIO_ROOT})
-SET(RobWorkStudio_DIR ${RWSTUDIO_ROOT}/cmake) # use on virtual machine
-#SET(RobWorkStudio_DIR /home/per/RobWork/RobWorkStudio//cmake) # use on own machine
+#SET(RobWorkStudio_DIR ${RWSTUDIO_ROOT}//cmake) # use on virtual machine
+SET(RobWorkStudio_DIR /home/per/RobWork/RobWorkStudio//cmake) # use on own machine
 FIND_PACKAGE(RobWorkStudio REQUIRED)
 INCLUDE_DIRECTORIES( ${ROBWORKSTUDIO_INCLUDE_DIRS} )
 LINK_DIRECTORIES( ${ROBWORKSTUDIO_LIBRARY_DIRS} )
 
 
-#set(OpenCV_DIR /opt/ros/kinetic/share/OpenCV-3.2.0-dev) # use on own machine
+set(OpenCV_DIR /opt/ros/kinetic/share/OpenCV-3.2.0-dev) # use on own machine
 
 # Use OpenCV 3
 find_package(OpenCV 3 REQUIRED)

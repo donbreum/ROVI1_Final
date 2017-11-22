@@ -33,6 +33,8 @@
 #include <rw/math/RPY.hpp>
 #include <rw/kinematics/MovableFrame.hpp>
 
+#include <rw/math/LinearAlgebra.hpp>
+
 #include <string>
 
 #include "Vision.hpp"
@@ -75,6 +77,12 @@ public:
     cv::Point lastPoint;
     void setCamera(cv::Mat img);
     cv::Mat getCameraImage();
+    Jacobian getImageJacobian(Vector2D<> uv_pts, double f, double z);
+    Jacobian calcZimage(const Jacobian Jimage, rw::models::Device::Ptr device, const Q q, rw::kinematics::State state);
+    Vector2D<double> goal;
+    void drawLine( Mat img);
+    std::vector<Vector2D<double> > get_marker_pts(Frame *marker_frame, Frame *camera_frame, int num_tracked_points,double z, double f);
+    String usernamestr = "per";
 private slots:
 
     void btnPressed();

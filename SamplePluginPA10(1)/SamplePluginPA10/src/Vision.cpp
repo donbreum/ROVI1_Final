@@ -16,8 +16,8 @@ cv::Mat Vision::getImage(){
 
 cv::Point Vision::getCenterPoint(cv::Mat inputImg){
 
-            Mat fix_c;
-            cvtColor(inputImg, fix_c,CV_BGR2RGB);
+            Mat dummy;
+            cvtColor(inputImg, dummy,CV_BGR2RGB);
     // https://solarianprogrammer.com/2015/05/08/detect-red-circles-image-using-opencv/
             Mat red_hue_image,blue_hue_image,imgHSV;
             Mat img = inputImg.clone();
@@ -93,7 +93,7 @@ cv::Point Vision::getCenterPoint(cv::Mat inputImg){
             imgDraw = display.clone();
 
             cv::Point center = findMidPoint(ptsRED,ptsBLUE);
-            cv::circle(imgDraw, center, 4, cv::Scalar(0, 0, 0), 5);
+            //cv::circle(imgDraw, center, 4, cv::Scalar(0, 0, 0), 5);
 
             //cv::line(imgDraw,ptsBLUE[0],ptsBLUE[2],Scalar(0,0,0),5);
             //sp.writeLog(center);

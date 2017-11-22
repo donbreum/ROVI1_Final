@@ -9,6 +9,8 @@
 
 #include <functional>
 
+
+
 using namespace rw::common;
 using namespace rw::graphics;
 using namespace rw::kinematics;
@@ -17,6 +19,8 @@ using namespace rw::models;
 using namespace rw::sensor;
 using namespace rwlibs::opengl;
 using namespace rwlibs::simulation;
+
+using namespace rw::math;
 
 using namespace rws;
 
@@ -58,14 +62,14 @@ void SamplePlugin::initialize() {
     getRobWorkStudio()->stateChangedEvent().add(std::bind(&SamplePlugin::stateChangedListener, this, _1), this);
 
     // Auto load workcell
-    WorkCell::Ptr wc = WorkCellLoader::Factory::load("/home/stu"
-
-                                                     "dent/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/PA10WorkCell/PA10WorkCell/ScenePA10RoVi1.wc.xml");
+    String wc_str = ("/home/" +usernamestr +"/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/PA10WorkCell/PA10WorkCell/ScenePA10RoVi1.wc.xml");
+    WorkCell::Ptr wc = WorkCellLoader::Factory::load(wc_str);
     getRobWorkStudio()->setWorkCell(wc);
 
     // Load Lena image
     Mat im, image;
-    im = imread("/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/lena.bmp", CV_LOAD_IMAGE_COLOR); // Read the file
+    String im_str = ("/home/" +usernamestr +"/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/lena.bmp");
+    im = imread(im_str, CV_LOAD_IMAGE_COLOR); // Read the file
     cvtColor(im, image, CV_BGR2RGB); // Switch the red and blue color channels
     if(! image.data ) {
         RW_THROW("Could not open or find the image: please modify the file path in the source code!");
@@ -154,15 +158,18 @@ Mat SamplePlugin::toOpenCVImage(const Image& img) {
 
 
 void SamplePlugin::btnPressed() {
-    marker_motions = readMotionFile("/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/motions/MarkerMotionSlow.txt");
+    String mot_str = "/home/" +usernamestr +"/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/motions/MarkerMotionSlow.txt";
+    marker_motions = readMotionFile(mot_str);
     QObject *obj = sender();
 	if(obj==_btn0){
         log().info() << "Button 00000\n";
 		// Set a new texture (one pixel = 1 mm)
 		Image::Ptr image;
-        image = ImageLoader::Factory::load("/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/markers/Marker1.ppm");
+        String ima_str = ("/home/" +usernamestr +"/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/markers/Marker1.ppm");
+        image = ImageLoader::Factory::load(ima_str);
 		_textureRender->setImage(*image);
-        image = ImageLoader::Factory::load("/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/backgrounds/white.ppm");
+        String imag_str = ("/home/" +usernamestr +"/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/backgrounds/white.ppm");
+        image = ImageLoader::Factory::load(imag_str);
 		_bgRender->setImage(*image);
 		getRobWorkStudio()->updateAndRepaint();
 	} else if(obj==_btn1){
@@ -181,11 +188,16 @@ void SamplePlugin::btnPressed() {
         getRobWorkStudio()->setState(state);
 
         cv::Mat im = getCameraImage();
+
+        double f = 823.0; // focal length
+        double z = 0.5; // distance from camera to point being tracked. 0.5 meters
+        std::vector<Vector2D<double> >uv_points = get_marker_pts(marker, cameraFrame, 1, z, f);
+        goal = uv_points[0];
+        log().info() << "goal " << goal << endl;
         // now the image is drawed on while the center points are aquired, and then you can get the image with getImage().
         //The point is the center point, which can be used for tracking center of picture
-        cv::Point point = vis->getCenterPoint(im);
-        lastPoint = point;
-        log().info() << "First center: " << point << endl ;
+        cv::Point point1 = vis->getCenterPoint(im);
+
         log().info() << "Button 1111\n";
 		// Toggle the timer on and off
         if (!_timer->isActive()
@@ -213,10 +225,10 @@ void SamplePlugin::timer() {
     cv::Point point = vis->getCenterPoint(im);
     cv::Mat imflip =vis->getImage();
 
-    int cols = imflip.cols;
-    int rows = imflip.rows;
-    cv::Point viewCenterPoint(cols/2,rows/2);
-    cv::circle(imflip,viewCenterPoint, 4, cv::Scalar(0, 0, 0), 5);
+//    int cols = imflip.cols;//
+ //   int rows = imflip.rows;
+//    cv::Point viewCenterPoint(cols/2,rows/2);
+//    cv::circle(imflip,viewCenterPoint, 4, cv::Scalar(0, 0, 0), 5);
 
 log().info() << "counter val: " << counter << "\n";
 //marker->moveTo(marker_motions[counter++], state);
@@ -224,44 +236,128 @@ marker->setTransform(marker_motions[counter++], state); // both moveTo and setTr
 
 getRobWorkStudio()->setState(state);
 
-const rw::math::Transform3D<> baseTtool = device->baseTframe(cameraFrame, state);
+//const rw::math::Transform3D<> baseTtool = device->baseTframe(cameraFrame, state);
 
-// Choose a small positional change, deltaP (ca. 10^-4)
-double deltaX = point.x - lastPoint.x ;//0.0035;
-double deltaY = (point.y - lastPoint.y);//0.0035;
-double diffC = (point.x) - viewCenterPoint.x;
-const double delta = 0.0;
-log().info() << "diff : " << diffC << endl;
-log().info() << "point.y: " << (point.y) << endl;
-const rw::math::Vector3D<double> deltaP(0,delta , 0);
+/// new approach
+///
+double f = 823.0; // focal length
+double z = 0.5; // distance from camera to point being tracked. 0.5 meters
 
-
-
-// Choose baseTtool_desired by adding the positional change deltaP to the position part of baseTtool
-const rw::math::Vector3D<> deltaPdesired = baseTtool.P() + deltaP;
+    std::vector<Vector2D<double> >uv_points = get_marker_pts(marker, cameraFrame, 1, z, f);
+    cv::Point ptt(uv_points[0][0]+(imflip.cols/2),uv_points[0][1]+(imflip.rows/2));
+//    log().info() << "point::::: " << ptt << endl;
+    cv::circle(imflip,ptt, 4, cv::Scalar(255, 0, 0), 5);
 
 
-const rw::math::Transform3D<double> baseTtool_desired(deltaPdesired, baseTtool.R());
+    Jacobian j_image = getImageJacobian(uv_points[0],f,z);
 
-//// Apply algorithm 1
+    Jacobian j__z = calcZimage(j_image, device, q_init, state); // return  Jimage*S*J;
 
-rw::math::Q q_desired = algorithm1(device, state, cameraFrame, baseTtool_desired, q_init);
+    // https://eigen.tuxfamily.org/dox/group__TutorialMatrixClass.html
+    // use eigen library for handling the matrix calculations
+    // matrices sizes does not have to be known at compile time with Eigen::MatrixXd (last letter is specifing datatype, e.g. double)
 
-     device->setQ(q_desired, state);
-getRobWorkStudio()->setState(state);
- log().info() <<"alg1 Q; " << q_desired << endl;
+    // WHAT WE NEEED (taken from the robotics notes):
+    // Z_image(q) = J_image * S(q) * J(q)  --- calculated above, need new representation
+    // Need to solve:  (Z_Image(q) * Z_image(q)^Transpose) * y = [du]  --- we have [du] from above
+
+
+    // get the eigen representation of the j_z Jacobian
+    Eigen::MatrixXd z_image = j__z.e();
+
+    // get the inverse of z_image matrix
+    Eigen::MatrixXd z_inv = z_image.inverse();
+
+    // get the transpose of z_image: Z_image(q)^Tranpose
+    Eigen::MatrixXd z_image_transpose = z_image.transpose();
+
+    // to use for calculating Moore-Penrose inverse (we can use this if there is more than 2 DOF)
+    // formula: Z* = inverse(Z^T * Z) * Z^T
+    Eigen::MatrixXd z_moore_penrose = z_image_transpose*LinearAlgebra::pseudoInverse(z_image*z_image_transpose);
+
+//    log().info() << "zzz\n" << zz << endl;
+//    log().info() << "goal " << goal << endl;
+//    log().info() << "curr point  " << uv_points[0] << endl;
+
+    // subtract the current point from the desired point
+    Vector2D<double> error_tracking  = goal - uv_points[0];
+//    log().info() << "error " << error_tracking << endl;
+
+    // cast the tracked point(s) to a Jacobian and push it to our vector of jacobian - it will hold the stacked Jacobians, if we have more than 1 tracking point
+    std::vector<Jacobian> jac;
+    jac.push_back(Jacobian(error_tracking.e()));
+
+ //    log().info() << "jacs  " << jacbs[0] << endl;
+
+    // Now we have all to solve for y (see Robotics notes p. 52 top)
+    Jacobian y(z_moore_penrose * jac[0].e());
+
+    // create Q vector for the chosen y
+    Q dq_q(y.e());
+
+    //  log().info() << "dq_q\n  " << dq_q << endl;
+
+    // log().info() << "curr Q\n  " << temp << endl;
+
+     log().info() << "vel limits: " << device->getVelocityLimits() << endl;
+
+    // get current configuration
+    Q temp = device->getQ(state);
+    // set the deltaQ to current configuration + the calculated adjustment
+    Q dq = temp;
+    dq += dq_q;
+    // log().info() << "NEW  Q\n  " << dq << "\n\n"<<endl;
+
+    // remember to set the new configuration and set the state in robworkstudio
+    device->setQ(dq, state);
+    getRobWorkStudio()->setState(state);
+
+//    zzz = LinearAlgebra::pseudoInverse(z_imageE*z_transpose) *z_transpose ; // 2x2
+//    log().info() << "zzz1\n" << zzz << endl;
+
+
+//    zzz = LinearAlgebra::pseudoInverse(z_transpose * z_imageE) *z_transpose ; // 7x2 - same as the first
+//    log().info() << "zzz2\n" << zzz << endl;
+
+
+    //z_inverse.transpose()*points[0];
+//    log().info() << "z_image\n " << z_image << endl;
+//    log().info() << "z_image transpose\n " << z_transpose << endl;
+
+//    log().info() << "z_inverse\n " << z_inv << endl;
+//    log().info() << "z_z_tranpose : " << z_z_transpose << endl;
+
+///
+///
+///
 
 
     setCamera(imflip); // set the image that we see in the workcell camera simulator
-
-    lastPoint = point; // the current point will be used next time for calculating diff for translation
 }
 
 void SamplePlugin::stateChangedListener(const State& state) {
   _state = state;
 }
 
+std::vector<Vector2D<double> > SamplePlugin::get_marker_pts(Frame *marker_frame, Frame *camera_frame, int num_tracked_points,double z, double f){
 
+    std::vector<Vector2D<double>> uv_points; // used to hold all points tracked
+
+    Transform3D<> marker_transform = inverse(marker_frame->fTf(camera_frame, state)); // frame-to-frame transformation, used to find midpoint of marker in the workspace
+
+    std::vector<Vector3D<> > pts_marker; // Vector3D used since we need to use 3D coordinates for tests (though the last is 0)
+
+    pts_marker.push_back(marker_transform * Vector3D<>(0,0,0));
+    //log().info() << "marker points\n " << pts_marker[0] << endl;
+    for(auto pt_marker : pts_marker)
+    {
+        Vector2D<double> pt;
+        pt[0] = f * pt_marker[0] / z; // using pinholde model to obtain image coordinates u,v
+        pt[1] = f * pt_marker[1] / z;
+        uv_points.push_back(pt);
+     }
+    return uv_points;
+}
 
 std::vector<Transform3D<double> > SamplePlugin::readMotionFile(std::string file_name)
 {
@@ -372,4 +468,69 @@ cv::Mat SamplePlugin::getCameraImage(){
         return imflip;
     }
     return dummy;
+}
+
+
+Jacobian SamplePlugin::getImageJacobian(Vector2D<> uv_pts, double f, double z) //
+{
+    //double x = xyz.x;//[0];
+    //double y = xyz.y;//[1];
+    //int z = xyz[2];
+    double u = uv_pts[0];
+    double v = uv_pts[1];
+    Jacobian Jimage(2,6);
+    Jimage(0,0) = -f/z;
+    Jimage(0,1) = 0;
+    Jimage(0,2) = u/z;
+    Jimage(0,3) = u*v/f;
+    Jimage(0,4) = -((pow(f,2)+pow(u,2))/f);
+    Jimage(0,5) = v;
+    Jimage(1,0) = 0;
+    Jimage(1,1) = -f/z;
+    Jimage(1,2) = v/z;
+    Jimage(1,3) = ((pow(f,2)+pow(v,2))/f);
+    Jimage(1,4) = -u*v/f;
+    Jimage(1,5) = -u;
+    return Jimage;
+}
+
+Jacobian SamplePlugin::calcZimage(const Jacobian Jimage, rw::models::Device::Ptr device, const Q q, rw::kinematics::State state)
+{
+    //device->setQ(q,state);
+
+    Rotation3D<> baseRtool = device->baseTend(state).R().inverse();
+    Jacobian S(6,6);
+    S.e().setZero();
+    S.e().block<3,3>(0,0) = S.e().block<3,3>(3,3) = baseRtool.e();
+    Jacobian J = device->baseJend(state);
+    return Jimage*S*J;
+}
+
+void SamplePlugin::drawLine( Mat img)
+{
+    int im_cols = img.cols/2;
+    int im_rows = img.rows/2;
+    cv::Point start(im_rows,im_cols);
+    cv::Point end1(im_rows,im_cols+50);
+    cv::Point end2(im_rows+50,im_cols);
+
+  int thickness = 5;
+  int lineType = 8;
+  arrowedLine( img,
+        start,
+        end1,
+        Scalar( 0, 0, 0 ),
+        thickness,
+        lineType/*,
+        shift,
+        tiplength*/);
+
+  arrowedLine( img,
+        start,
+        end2,
+        Scalar( 0, 0, 0 ),
+        thickness,
+        lineType/*,
+        shift,
+        tiplength*/);
 }

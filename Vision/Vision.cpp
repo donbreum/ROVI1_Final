@@ -51,6 +51,7 @@ cv::Point Vision::getCenterPoint(cv::Mat inputImg){
                 pts[current_circle] = Point(circles[current_circle][0],circles[current_circle][1]);
 
                 }
+
             cout << "pts size: " << pts.size() << endl;
             writeImage(display,"disp");
 
@@ -66,6 +67,14 @@ cv::Point Vision::findMidPoint(std::vector<cv::Point> pts){
     cv::Point center = (pts[3]+pts[0])/2;
 
     cout << "center: " << center << endl;
+
+        cout << "dis: " << cv::norm(pts[0]-pts[1]) << endl;
+        cout << "dis: " << cv::norm(pts[0]-pts[2]) << endl;
+        cout << "dis: " << cv::norm(pts[0]-pts[3]) << endl;
+        cout << "dis: " << cv::norm(pts[1]-pts[2]) << endl;
+       cout << "dis: " << cv::norm(pts[2]-pts[3]) << endl;
+
+
 
     return center;
 

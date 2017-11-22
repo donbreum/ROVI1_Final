@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10"
+CMAKE_SOURCE_DIR = "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build"
+CMAKE_BINARY_DIR = "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/RoVi1PluginPA10.dir/depend.make
@@ -57,31 +57,31 @@ include CMakeFiles/RoVi1PluginPA10.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/RoVi1PluginPA10.dir/flags.make
 
-ui_SamplePlugin.h: /home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/SamplePlugin.ui
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir="/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Generating ui_SamplePlugin.h"
-	/usr/lib/x86_64-linux-gnu/qt5/bin/uic -o "/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/ui_SamplePlugin.h" "/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/SamplePlugin.ui"
+ui_SamplePlugin.h: /home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/SamplePlugin.ui
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir="/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Generating ui_SamplePlugin.h"
+	/usr/lib/x86_64-linux-gnu/qt5/bin/uic -o "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/ui_SamplePlugin.h" "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/SamplePlugin.ui"
 
-src/moc_SamplePlugin.cpp: /home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/SamplePlugin.hpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir="/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Generating src/moc_SamplePlugin.cpp"
-	cd "/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/src" && /usr/lib/x86_64-linux-gnu/qt5/bin/moc "@/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/src/moc_SamplePlugin.cpp_parameters"
+src/moc_SamplePlugin.cpp: /home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/SamplePlugin.hpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir="/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Generating src/moc_SamplePlugin.cpp"
+	cd "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/src" && /usr/lib/x86_64-linux-gnu/qt5/bin/moc "@/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/src/moc_SamplePlugin.cpp_parameters"
 
-qrc_resources.cpp: /home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/pa_icon.png
-qrc_resources.cpp: /home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/resources.qrc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir="/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Generating qrc_resources.cpp"
-	/usr/lib/x86_64-linux-gnu/qt5/bin/rcc --name resources --output "/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/qrc_resources.cpp" "/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/resources.qrc"
+qrc_resources.cpp: /home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/pa_icon.png
+qrc_resources.cpp: /home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/resources.qrc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir="/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Generating qrc_resources.cpp"
+	/usr/lib/x86_64-linux-gnu/qt5/bin/rcc --name resources --output "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/qrc_resources.cpp" "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/resources.qrc"
 
 CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o: CMakeFiles/RoVi1PluginPA10.dir/flags.make
-CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o: /home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/SamplePlugin.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o -c "/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/SamplePlugin.cpp"
+CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o: /home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/SamplePlugin.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o -c "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/SamplePlugin.cpp"
 
 CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/SamplePlugin.cpp" > CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/SamplePlugin.cpp" > CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.i
 
 CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/SamplePlugin.cpp" -o CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/SamplePlugin.cpp" -o CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.s
 
 CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o.requires:
 
@@ -95,17 +95,17 @@ CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o.provides.build: CMakeFiles
 
 
 CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.o: CMakeFiles/RoVi1PluginPA10.dir/flags.make
-CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.o: /home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/Vision.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.o -c "/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/Vision.cpp"
+CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.o: /home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/Vision.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.o -c "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/Vision.cpp"
 
 CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/Vision.cpp" > CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/Vision.cpp" > CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.i
 
 CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/Vision.cpp" -o CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/Vision.cpp" -o CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.s
 
 CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.o.requires:
 
@@ -120,16 +120,16 @@ CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.o.provides.build: CMakeFiles/RoVi1
 
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o: CMakeFiles/RoVi1PluginPA10.dir/flags.make
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o: src/moc_SamplePlugin.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o -c "/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/src/moc_SamplePlugin.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o -c "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/src/moc_SamplePlugin.cpp"
 
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/src/moc_SamplePlugin.cpp" > CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/src/moc_SamplePlugin.cpp" > CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.i
 
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/src/moc_SamplePlugin.cpp" -o CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/src/moc_SamplePlugin.cpp" -o CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.s
 
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o.requires:
 
@@ -144,16 +144,16 @@ CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o.provides.build: CMakeF
 
 CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o: CMakeFiles/RoVi1PluginPA10.dir/flags.make
 CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o: qrc_resources.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o -c "/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/qrc_resources.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o -c "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/qrc_resources.cpp"
 
 CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/qrc_resources.cpp" > CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/qrc_resources.cpp" > CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.i
 
 CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/qrc_resources.cpp" -o CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/qrc_resources.cpp" -o CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.s
 
 CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o.requires:
 
@@ -176,142 +176,142 @@ RoVi1PluginPA10_OBJECTS = \
 # External object files for target RoVi1PluginPA10
 RoVi1PluginPA10_EXTERNAL_OBJECTS =
 
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.o
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: CMakeFiles/RoVi1PluginPA10.dir/build.make
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_lua_s.a
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/liblua51.a
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_algorithms.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_pathplanners.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_pathoptimization.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_simulation.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_opengl.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_assembly.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_task.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_calibration.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_csg.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_control.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_proximitystrategies.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/libyaobi.a
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/libpqp.a
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/libfcl.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libGLU.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libGL.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libxerces-c.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_assimp.a
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_regex.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_serialization.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_system.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libpthread.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_test_exec_monitor.a
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_qhull.a
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_csgjs.a
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_unzip.a
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libz.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libdl.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libQt5OpenGL.so.5.5.1
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libGLU.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libGL.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_lua_s.a
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/liblua51.a
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_algorithms.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_pathplanners.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_pathoptimization.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_simulation.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_opengl.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_assembly.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_task.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_calibration.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_csg.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_control.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_proximitystrategies.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/libyaobi.a
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/libpqp.a
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/libfcl.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libGLU.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libGL.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libxerces-c.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_assimp.a
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_regex.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_serialization.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_system.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libpthread.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_test_exec_monitor.a
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_qhull.a
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_csgjs.a
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/student/RobWork/RobWork/libs/release/librw_unzip.a
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libz.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libdl.so
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_stitching3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_superres3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_videostab3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_aruco3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_bgsegm3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_bioinspired3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_ccalib3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_cvv3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_datasets3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_dpm3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_face3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_fuzzy3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_hdf3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_line_descriptor3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_optflow3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_plot3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_reg3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_saliency3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_stereo3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_structured_light3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_surface_matching3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_text3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_xfeatures2d3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_ximgproc3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_xobjdetect3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_xphoto3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_shape3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_video3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_viz3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_phase_unwrapping3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_rgbd3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_calib3d3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_features2d3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_flann3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_objdetect3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_ml3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_highgui3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.5.1
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.5.1
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.5.1
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_photo3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_videoio3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_imgcodecs3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_imgproc3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_core3.so.3.2.0
-/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: CMakeFiles/RoVi1PluginPA10.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX shared module \"/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so\""
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.o
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: CMakeFiles/RoVi1PluginPA10.dir/build.make
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_lua_s.a
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/liblua51.a
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_algorithms.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_pathplanners.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_pathoptimization.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_simulation.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_opengl.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_assembly.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_task.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_calibration.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_csg.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_control.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_proximitystrategies.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/libyaobi.a
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/libpqp.a
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/libfcl.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libGLU.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libGL.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libxerces-c.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_assimp.a
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_regex.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_serialization.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_system.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_thread.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libpthread.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_test_exec_monitor.a
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_qhull.a
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_csgjs.a
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_unzip.a
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libz.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libdl.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libQt5OpenGL.so.5.5.1
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libGLU.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libGL.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_lua_s.a
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/liblua51.a
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_algorithms.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_pathplanners.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_pathoptimization.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_simulation.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_opengl.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_assembly.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_task.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_calibration.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_csg.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_control.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_proximitystrategies.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/libyaobi.a
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/libpqp.a
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/libfcl.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libGLU.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libGL.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libxerces-c.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_assimp.a
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_regex.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_serialization.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_system.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_thread.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libpthread.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_test_exec_monitor.a
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libboost_unit_test_framework.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_qhull.a
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_csgjs.a
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /home/per/RobWork/RobWork/libs/release/librw_unzip.a
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libz.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libdl.so
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_stitching3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_superres3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_videostab3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_aruco3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_bgsegm3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_bioinspired3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_ccalib3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_cvv3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_datasets3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_dpm3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_face3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_fuzzy3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_hdf3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_line_descriptor3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_optflow3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_plot3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_reg3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_saliency3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_stereo3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_structured_light3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_surface_matching3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_text3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_xfeatures2d3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_ximgproc3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_xobjdetect3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_xphoto3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_shape3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_video3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_viz3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_phase_unwrapping3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_rgbd3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_calib3d3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_features2d3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_flann3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_objdetect3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_ml3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_highgui3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.5.1
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.5.1
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.5.1
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_photo3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_videoio3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_imgcodecs3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_imgproc3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_core3.so.3.2.0
+/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: CMakeFiles/RoVi1PluginPA10.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX shared module \"/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so\""
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/RoVi1PluginPA10.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/RoVi1PluginPA10.dir/build: /home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so
+CMakeFiles/RoVi1PluginPA10.dir/build: /home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so
 
 .PHONY : CMakeFiles/RoVi1PluginPA10.dir/build
 
@@ -329,6 +329,6 @@ CMakeFiles/RoVi1PluginPA10.dir/clean:
 CMakeFiles/RoVi1PluginPA10.dir/depend: ui_SamplePlugin.h
 CMakeFiles/RoVi1PluginPA10.dir/depend: src/moc_SamplePlugin.cpp
 CMakeFiles/RoVi1PluginPA10.dir/depend: qrc_resources.cpp
-	cd "/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10" "/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10" "/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build" "/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build" "/home/student/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles/RoVi1PluginPA10.dir/DependInfo.cmake" --color=$(COLOR)
+	cd "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10" "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10" "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build" "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build" "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles/RoVi1PluginPA10.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/RoVi1PluginPA10.dir/depend
 

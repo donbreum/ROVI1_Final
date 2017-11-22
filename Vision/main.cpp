@@ -124,7 +124,7 @@ int main(int argc, char* argv[]){
            point = vis.getCenterPoint(img);
 
            Mat display = img.clone();
-            cv::circle(display, point, 2, cv::Scalar(0, 255, 0), 5);
+            cv::circle(display, point, 2, cv::Scalar(0, 0, 0), 5);
 
 //        cv::HoughCircles(red_hue_image, circles, CV_HOUGH_GRADIENT, 1, red_hue_image.rows/8, 100, 20, 0, 0);
 //        if(circles.size() == 0) std::exit(-1);
