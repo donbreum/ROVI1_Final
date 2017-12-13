@@ -126,7 +126,6 @@ void SamplePlugin::open(WorkCell* workcell)
 
 }
 
-
 void SamplePlugin::close() {
     log().info() << "CLOSE" << "\n";
 
@@ -158,7 +157,7 @@ Mat SamplePlugin::toOpenCVImage(const Image& img) {
 
 
 void SamplePlugin::btnPressed() {
-    String mot_str = "/home/" +usernamestr +"/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/motions/MarkerMotionSlow.txt";
+    String mot_str = "/home/" +usernamestr +"/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/motions/MarkerMotionMedium.txt";
     marker_motions = readMotionFile(mot_str);
     QObject *obj = sender();
 	if(obj==_btn0){
@@ -172,6 +171,7 @@ void SamplePlugin::btnPressed() {
         image = ImageLoader::Factory::load(imag_str);
 		_bgRender->setImage(*image);
 		getRobWorkStudio()->updateAndRepaint();
+        counter = 0;
 	} else if(obj==_btn1){
 
         //state = getRobWorkStudio()->getState();
@@ -191,9 +191,9 @@ void SamplePlugin::btnPressed() {
 
         double f = 823.0; // focal length
         double z = 0.5; // distance from camera to point being tracked. 0.5 meters
-        std::vector<Vector2D<double> >uv_points = get_marker_pts(marker, cameraFrame, 1, z, f);
-        goal = uv_points[0];
-        log().info() << "goal " << goal << endl;
+        std::vector<Vector2D<double> >uv_points = get_marker_pts(marker, cameraFrame, POINTS, z, f);
+        goal = uv_points;
+        goal_single = uv_points[0];
         // now the image is drawed on while the center points are aquired, and then you can get the image with getImage().
         //The point is the center point, which can be used for tracking center of picture
         cv::Point point1 = vis->getCenterPoint(im);
@@ -202,7 +202,7 @@ void SamplePlugin::btnPressed() {
 		// Toggle the timer on and off
         if (!_timer->isActive()
                 )
-		    _timer->start(100); // run 10 Hz
+            _timer->start(100); // run 10 Hz (value 100)
 		else
 			_timer->stop();
 	} else if(obj==_spinBox){
@@ -220,6 +220,7 @@ void SamplePlugin::timer() {
     cameraFrame = _wc->findFrame("Camera");
 
     cv::Mat im = getCameraImage();
+
     // now the image is drawed on while the center points are aquired, and then you can get the image with getImage().
     //The point is the center point, which can be used for tracking center of picture
     cv::Point point = vis->getCenterPoint(im);
@@ -232,9 +233,11 @@ void SamplePlugin::timer() {
 
 log().info() << "counter val: " << counter << "\n";
 //marker->moveTo(marker_motions[counter++], state);
+if(counter < marker_motions.size()){
 marker->setTransform(marker_motions[counter++], state); // both moveTo and setTransform is functions from the Movableframe class. They seem to do the same thing
 
 getRobWorkStudio()->setState(state);
+}
 
 //const rw::math::Transform3D<> baseTtool = device->baseTframe(cameraFrame, state);
 
@@ -243,15 +246,44 @@ getRobWorkStudio()->setState(state);
 double f = 823.0; // focal length
 double z = 0.5; // distance from camera to point being tracked. 0.5 meters
 
-    std::vector<Vector2D<double> >uv_points = get_marker_pts(marker, cameraFrame, 1, z, f);
-    cv::Point ptt(uv_points[0][0]+(imflip.cols/2),uv_points[0][1]+(imflip.rows/2));
+    std::vector<Vector2D<double> >uv_points = get_marker_pts(marker, cameraFrame, POINTS, z, f);
+    //cv::Point ptt(uv_points[0][0]+(imflip.cols/2),uv_points[0][1]+(imflip.rows/2));
 //    log().info() << "point::::: " << ptt << endl;
-    cv::circle(imflip,ptt, 4, cv::Scalar(255, 0, 0), 5);
+    //cv::circle(imflip,ptt, 4, cv::Scalar(255, 0, 0), 5);
+
+    cv::Point midtpt(1024/2,768/2);
+     //cv::circle(imflip,midtpt, 4, cv::Scalar(0, 0, 0), 5);
 
 
-    Jacobian j_image = getImageJacobian(uv_points[0],f,z);
+    vector<Jacobian> j_image = getImageJacobian(uv_points,f,z);
+//    log().info() << "stacked jac\n" << j_image[0] << endl;
+//    log().info() << "stacked jac\n" << j_image[1] << endl;
+//    log().info() << "stacked jac\n" << j_image[2] << endl;
 
-    Jacobian j__z = calcZimage(j_image, device, q_init, state); // return  Jimage*S*J;
+     vector<Jacobian> j__z = calcZimage(j_image, device, q_init, state); // return  Jimage*S*J;
+
+     Jacobian stacked_jack_single_point(2,7);
+     Jacobian stacked_jack_three_point(6,7);
+//    //Jacobian stacked_jac = stack_jacobian(j__z);
+     if(POINTS == 3){
+         Jacobian stacked_jac(j__z.size()*2,7);
+
+        for(int i = 0, ii = 0; i < j__z.size(); i++, ii+=2){
+            for(int j = 0; j < 7; j++){
+                stacked_jac.elem(ii,j) = j__z[i].elem(0,j);
+                stacked_jac.elem((ii+1),j) = j__z[i].elem(1,j);
+            }
+        }
+        stacked_jack_three_point = stacked_jac;
+
+    }else if(POINTS == 1){
+         Jacobian stacked_jac = j__z[0];
+         stacked_jack_single_point = stacked_jac;
+
+     }
+//    log().info() << "stacked jac\n" << j__z[0] << endl;
+//    log().info() << "stacked jac\n" << j__z[1] << endl;
+//    log().info() << "stacked jac\n" << j__z[2] << endl;
 
     // https://eigen.tuxfamily.org/dox/group__TutorialMatrixClass.html
     // use eigen library for handling the matrix calculations
@@ -263,73 +295,139 @@ double z = 0.5; // distance from camera to point being tracked. 0.5 meters
 
 
     // get the eigen representation of the j_z Jacobian
-    Eigen::MatrixXd z_image = j__z.e();
+    Eigen::MatrixXd z_image;
+    if(POINTS == 3){
+    z_image = stacked_jack_three_point.e();
+    }else if(POINTS == 1){
+    z_image = stacked_jack_single_point.e();
+    }
+    //Eigen::MatrixXd z_image = j__z[0].e();
 
     // get the inverse of z_image matrix
     Eigen::MatrixXd z_inv = z_image.inverse();
+    //Eigen::MatrixXd z_inv = z_image.inverse();
+
 
     // get the transpose of z_image: Z_image(q)^Tranpose
     Eigen::MatrixXd z_image_transpose = z_image.transpose();
 
-    // to use for calculating Moore-Penrose inverse (we can use this if there is more than 2 DOF)
-    // formula: Z* = inverse(Z^T * Z) * Z^T
+//    // to use for calculating Moore-Penrose inverse (we can use this if there is more than 2 DOF)
+//    // formula: Z* = inverse(Z^T * Z) * Z^T
     Eigen::MatrixXd z_moore_penrose = z_image_transpose*LinearAlgebra::pseudoInverse(z_image*z_image_transpose);
 
-//    log().info() << "zzz\n" << zz << endl;
-//    log().info() << "goal " << goal << endl;
-//    log().info() << "curr point  " << uv_points[0] << endl;
 
-    // subtract the current point from the desired point
-    Vector2D<double> error_tracking  = goal - uv_points[0];
-//    log().info() << "error " << error_tracking << endl;
+    vector<Vector2D<double> > error_tracking;
+    //vector<Vector2D<double> > error_tracking1;
+    //error_tracking.push_back(goal_single - uv_points[0]);
+    error_tracking.resize(POINTS);
+    for(int i = 0; i < POINTS; i++){
+     // subtract the current point from the desired point
+     error_tracking[i]  = goal[i] - uv_points[i];
+        //log().info() << "error " << error_tracking << endl;
 
-    // cast the tracked point(s) to a Jacobian and push it to our vector of jacobian - it will hold the stacked Jacobians, if we have more than 1 tracking point
+    }
+
     std::vector<Jacobian> jac;
-    jac.push_back(Jacobian(error_tracking.e()));
 
- //    log().info() << "jacs  " << jacbs[0] << endl;
+    //jac.push_back(Jacobian(error_tracking[0].e()));
 
-    // Now we have all to solve for y (see Robotics notes p. 52 top)
-    Jacobian y(z_moore_penrose * jac[0].e());
+    for(auto err : error_tracking){
+        jac.push_back(Jacobian(err.e()));
+    }
+    // cast the tracked point(s) to a Jacobian and push it to our vector of jacobian - it will hold the stacked Jacobians, if we have more than 1 tracking point
+
+    log().info() << "jac duv\n " << jac[0] << endl;
+    Jacobian stacked_du_single(2,1);
+    Jacobian stacked_du_three(6,1);
+
+    if(POINTS == 3){
+        Jacobian stacked_jac(6,1);
+
+       for(int i = 0, ii = 0; i < jac.size(); i++, ii+=2){
+           for(int j = 0; j < 1; j++){
+               stacked_jac.elem(ii,j) = jac[i].elem(0,j);
+               stacked_jac.elem((ii+1),j) = jac[i].elem(1,j);
+           }
+       }
+       stacked_du_three = stacked_jac;
+
+   }else if(POINTS == 1){
+        Jacobian stacked_jac = jac[0];
+        stacked_du_single = stacked_jac;
+
+    }
+
+    Q dq;
+    if(POINTS == 3){
+    //Jacobian y(z_moore_penrose * jac[0].e());
+        Jacobian y(z_moore_penrose * stacked_du_three.e());
+        Q dq_calculated(y.e());
+        Q velocityLimits =  device->getVelocityLimits() ;
+
+        dq_calculated = dq_calculated*DT;
+        for(int i = 0; i < dq_calculated.size();i++){
+            if(dq_calculated[i] > 0)
+                dq_calculated[i] = std::min(dq_calculated[i],velocityLimits[i]);
+            else
+                dq_calculated[i] = -(std::min(-dq_calculated[i],velocityLimits[i]));
+
+
+        }
+        Q temp = device->getQ(state);
+        // set the deltaQ to current configuration + the calculated adjustment
+        dq = temp;
+        dq += dq_calculated;
+    }else if(POINTS == 1){
+        Jacobian y(z_moore_penrose * stacked_du_single.e());
+        Q dq_calculated(y.e());
+        Q velocityLimits =  device->getVelocityLimits() ;
+
+        dq_calculated = dq_calculated/DT;
+        for(int i = 0; i < dq_calculated.size();i++){
+            dq_calculated[i] = std::min(dq_calculated[i],velocityLimits[i]);
+
+    }
+        Q temp = device->getQ(state);
+        // set the deltaQ to current configuration + the calculated adjustment
+        dq = temp;
+        dq += dq_calculated;
+
+    }
 
     // create Q vector for the chosen y
-    Q dq_q(y.e());
+    //Q dq_calculated(y.e());
 
     //  log().info() << "dq_q\n  " << dq_q << endl;
 
     // log().info() << "curr Q\n  " << temp << endl;
 
-     log().info() << "vel limits: " << device->getVelocityLimits() << endl;
+//    Q velocityLimits =  device->getVelocityLimits() ;
+////    log().info() << "vel limits: " << velocityLimits << endl;
+////     log().info() << "dq: " << dq_calculated/1 << endl;
+////    log().info() << "dq: " << dq_calculated/0.05 << endl;
+
+//    dq_calculated = dq_calculated/DT;
+//    for(int i = 0; i < dq_calculated.size();i++){
+//        dq_calculated[i] = std::min(dq_calculated[i],velocityLimits[i]);
+ //   }
+
+    // log().
 
     // get current configuration
-    Q temp = device->getQ(state);
-    // set the deltaQ to current configuration + the calculated adjustment
-    Q dq = temp;
-    dq += dq_q;
-    // log().info() << "NEW  Q\n  " << dq << "\n\n"<<endl;
+//    Q temp = device->getQ(state);
+//    // set the deltaQ to current configuration + the calculated adjustment
+//    Q dq = temp;
+//    dq += dq_calculated;
 
-    // remember to set the new configuration and set the state in robworkstudio
+////    log().info() << "NEW  Q\n  " << dq << "\n\n"<<endl;
+
+//    // remember to set the new configuration and set the state in robworkstudio
+if(counter < marker_motions.size()){
     device->setQ(dq, state);
     getRobWorkStudio()->setState(state);
+}
 
-//    zzz = LinearAlgebra::pseudoInverse(z_imageE*z_transpose) *z_transpose ; // 2x2
-//    log().info() << "zzz1\n" << zzz << endl;
-
-
-//    zzz = LinearAlgebra::pseudoInverse(z_transpose * z_imageE) *z_transpose ; // 7x2 - same as the first
-//    log().info() << "zzz2\n" << zzz << endl;
-
-
-    //z_inverse.transpose()*points[0];
-//    log().info() << "z_image\n " << z_image << endl;
-//    log().info() << "z_image transpose\n " << z_transpose << endl;
-
-//    log().info() << "z_inverse\n " << z_inv << endl;
-//    log().info() << "z_z_tranpose : " << z_z_transpose << endl;
-
-///
-///
-///
+    auto limit = device->getBounds();
 
 
     setCamera(imflip); // set the image that we see in the workcell camera simulator
@@ -347,16 +445,24 @@ std::vector<Vector2D<double> > SamplePlugin::get_marker_pts(Frame *marker_frame,
 
     std::vector<Vector3D<> > pts_marker; // Vector3D used since we need to use 3D coordinates for tests (though the last is 0)
 
-    pts_marker.push_back(marker_transform * Vector3D<>(0,0,0));
+    if(num_tracked_points == 1){
+        pts_marker.push_back(marker_transform * Vector3D<>(0,0,0));
+    }else if (num_tracked_points == 3){
+        pts_marker.push_back(marker_transform * Vector3D<>(0.15, 0.15, 0));
+        pts_marker.push_back(marker_transform * Vector3D<>(-0.15,0.15, 0));
+        pts_marker.push_back(marker_transform * Vector3D<>(0.15,-0.15, 0));
+    }
+
     //log().info() << "marker points\n " << pts_marker[0] << endl;
-    for(auto pt_marker : pts_marker)
-    {
+    for(auto pt_marker : pts_marker){
         Vector2D<double> pt;
         pt[0] = f * pt_marker[0] / z; // using pinholde model to obtain image coordinates u,v
         pt[1] = f * pt_marker[1] / z;
         uv_points.push_back(pt);
      }
+    //log().info() << "uv point\n " << uv_points[0] << endl;
     return uv_points;
+
 }
 
 std::vector<Transform3D<double> > SamplePlugin::readMotionFile(std::string file_name)
@@ -391,53 +497,6 @@ std::vector<Transform3D<double> > SamplePlugin::readMotionFile(std::string file_
     return motions;
 }
 
-// This function calculates delta U as in Equation 4.13. The output class is a velocity screw as that is a 6D vector with a positional and rotational part
-// What a velocity screw really is is not important to this class. For our purposes it is only a container.
-rw::math::VelocityScrew6D<double> SamplePlugin::calculateDeltaU(const rw::math::Transform3D<double>& baseTtool, const rw::math::Transform3D<double>& baseTtool_desired) {
-    // Calculate the positional difference, dp
-    rw::math::Vector3D<double> dp = baseTtool_desired.P() - baseTtool.P();
-
-    // Calculate the rotational difference, dw
-    rw::math::EAA<double> dw(baseTtool_desired.R() * rw::math::inverse(baseTtool.R()));
-
-    return rw::math::VelocityScrew6D<double>(dp, dw);
-}
-
-// The inverse kinematics algorithm needs to know about the device, the tool frame and the desired pose. These parameters are const since they are not changed by inverse kinematics
-// We pass the state and the configuration, q, as value so we have copies that we can change as we want during the inverse kinematics.
-rw::math::Q SamplePlugin::algorithm1(const rw::models::Device::Ptr device, rw::kinematics::State state, const rw::kinematics::Frame* tool,
-                       const rw::math::Transform3D<double> baseTtool_desired, rw::math::Q q) {
-    // We need an initial base to tool transform and the positional error at the start (deltaU)
-    rw::math::Transform3D<> baseTtool = device->baseTframe(tool, state);
-    rw::math::VelocityScrew6D<double> deltaU = calculateDeltaU(baseTtool, baseTtool_desired);
-
-    // This epsilon is the desired tolerance on the final position.
-    const double epsilon = 0.0001;
-    while(deltaU.norm2() > epsilon) {
-        rw::math::Jacobian J = device->baseJframe(tool, state); // This line does the same as the function from Programming Exercise 4.1
-    // We need the inverse of the jacobian. To do that, we need to access the Eigen representation of the matrix.
-    // For information on Eigen, see http://eigen.tuxfamily.org/.
-    rw::math::Jacobian Jinv(J.e().inverse());
-
-    // In RobWork there is an overload of operator* for Jacobian and VelocityScrew that gives Q
-    // This can also manually be done via Eigen as J.e().inverse() * deltaU.e()
-    // Note that this approach only works for 6DOF robots. If you use a different robot, you need to use a pseudo inverse to solve the equation J * deltaQ = deltaU
-    rw::math::Q deltaQ = Jinv*deltaU;
-
-    // Here we add the change in configuration to the current configuration and move the robot to that position.
-        q += deltaQ;
-        log().info() << "dd: " << q_init << endl;
-        device->setQ(q, state);
-
-    // We need to calculate the forward dynamics again since the robot has been moved
-        baseTtool = device->baseTframe(tool, state); // This line performs the forward kinematics (Programming Exercise 3.4)
-
-    // Update the cartesian position error
-        deltaU = calculateDeltaU(baseTtool, baseTtool_desired);
-    }
-    return q;
-}
-
 void SamplePlugin::writeLog(int i){
     log().info() << "size: " << i << endl;
 }
@@ -470,40 +529,61 @@ cv::Mat SamplePlugin::getCameraImage(){
     return dummy;
 }
 
+Jacobian SamplePlugin::stack_jacobian(vector<Jacobian> jacb){
 
-Jacobian SamplePlugin::getImageJacobian(Vector2D<> uv_pts, double f, double z) //
+    Jacobian stacked_jac(jacb.size()*2,7);
+
+    for(int i = 0, ii = 0; i < jacb.size(); i++, ii+=2){
+        for(int j = 0; j < 7; j++){
+            stacked_jac.elem(ii,j) = jacb[i].elem(0,j);
+            stacked_jac.elem((ii+1),j) = jacb[i].elem(1,j);
+        }
+    }
+
+}
+
+
+vector<Jacobian> SamplePlugin::getImageJacobian(vector<Vector2D<> > uv_pts, double f, double z) //
 {
     //double x = xyz.x;//[0];
     //double y = xyz.y;//[1];
     //int z = xyz[2];
-    double u = uv_pts[0];
-    double v = uv_pts[1];
-    Jacobian Jimage(2,6);
-    Jimage(0,0) = -f/z;
-    Jimage(0,1) = 0;
-    Jimage(0,2) = u/z;
-    Jimage(0,3) = u*v/f;
-    Jimage(0,4) = -((pow(f,2)+pow(u,2))/f);
-    Jimage(0,5) = v;
-    Jimage(1,0) = 0;
-    Jimage(1,1) = -f/z;
-    Jimage(1,2) = v/z;
-    Jimage(1,3) = ((pow(f,2)+pow(v,2))/f);
-    Jimage(1,4) = -u*v/f;
-    Jimage(1,5) = -u;
-    return Jimage;
+    vector<Jacobian> stacked_jacobians;
+
+    for(auto jac : uv_pts){
+        double u = jac[0];
+        double v = jac[1];
+        Jacobian Jimage(2,6);
+        Jimage(0,0) = -f/z;
+        Jimage(0,1) = 0;
+        Jimage(0,2) = u/z;
+        Jimage(0,3) = u*v/f;
+        Jimage(0,4) = -((pow(f,2)+pow(u,2))/f);
+        Jimage(0,5) = v;
+        Jimage(1,0) = 0;
+        Jimage(1,1) = -f/z;
+        Jimage(1,2) = v/z;
+        Jimage(1,3) = ((pow(f,2)+pow(v,2))/f);
+        Jimage(1,4) = -u*v/f;
+        Jimage(1,5) = -u;
+        stacked_jacobians.push_back(Jimage);
+    }
+    return stacked_jacobians;
 }
 
-Jacobian SamplePlugin::calcZimage(const Jacobian Jimage, rw::models::Device::Ptr device, const Q q, rw::kinematics::State state)
+vector<Jacobian> SamplePlugin::calcZimage(const vector<Jacobian> Jimage, rw::models::Device::Ptr device, const Q q, rw::kinematics::State state)
 {
     //device->setQ(q,state);
-
+    vector<Jacobian> z_img;
     Rotation3D<> baseRtool = device->baseTend(state).R().inverse();
     Jacobian S(6,6);
     S.e().setZero();
     S.e().block<3,3>(0,0) = S.e().block<3,3>(3,3) = baseRtool.e();
     Jacobian J = device->baseJend(state);
-    return Jimage*S*J;
+    for(auto j_img : Jimage){
+        z_img.push_back(j_img*S*J);
+    }
+    return z_img;
 }
 
 void SamplePlugin::drawLine( Mat img)

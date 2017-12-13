@@ -1,6 +1,8 @@
 #ifndef SAMPLEPLUGIN_HPP
 #define SAMPLEPLUGIN_HPP
 
+#define POINTS 3
+
 // RobWork includes
 #include <rw/models/WorkCell.hpp>
 #include <rw/kinematics/State.hpp>
@@ -38,6 +40,7 @@
 #include <string>
 
 #include "Vision.hpp"
+#include <algorithm>    // std::min
 
 using namespace rw::common;
 using namespace rw::graphics;
@@ -77,12 +80,15 @@ public:
     cv::Point lastPoint;
     void setCamera(cv::Mat img);
     cv::Mat getCameraImage();
-    Jacobian getImageJacobian(Vector2D<> uv_pts, double f, double z);
-    Jacobian calcZimage(const Jacobian Jimage, rw::models::Device::Ptr device, const Q q, rw::kinematics::State state);
-    Vector2D<double> goal;
+    vector<Jacobian> getImageJacobian(vector<Vector2D<> > uv_pts, double f, double z);
+    vector<Jacobian> calcZimage(const vector<Jacobian> Jimage, rw::models::Device::Ptr device, const Q q, rw::kinematics::State state);
+    vector<Vector2D<double> > goal;
+    Vector2D<double> goal_single;
     void drawLine( Mat img);
+    Jacobian stack_jacobian(vector<Jacobian> j);
     std::vector<Vector2D<double> > get_marker_pts(Frame *marker_frame, Frame *camera_frame, int num_tracked_points,double z, double f);
     String usernamestr = "per";
+    double DT = 0.5;
 private slots:
 
     void btnPressed();
