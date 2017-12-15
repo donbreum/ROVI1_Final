@@ -128,7 +128,10 @@ void SamplePlugin::open(WorkCell* workcell)
 
 void SamplePlugin::close() {
     log().info() << "CLOSE" << "\n";
-
+     pose_config_data.close();
+     error_data.close();
+     velocity_scaled.close();
+     pos_scaled.close();
     // Stop the timer
     _timer->stop();
     // Remove the texture render
@@ -157,7 +160,7 @@ Mat SamplePlugin::toOpenCVImage(const Image& img) {
 
 
 void SamplePlugin::btnPressed() {
-    String mot_str = "/home/" +usernamestr +"/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/motions/MarkerMotionMedium.txt";
+    String mot_str = "/home/" +usernamestr +"/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/motions/MarkerMotion"+SEQUENCE+".txt";
     marker_motions = readMotionFile(mot_str);
     QObject *obj = sender();
 	if(obj==_btn0){
@@ -172,6 +175,18 @@ void SamplePlugin::btnPressed() {
 		_bgRender->setImage(*image);
 		getRobWorkStudio()->updateAndRepaint();
         counter = 0;
+        String seq = std::to_string(POINTS);
+        //String seq = POINTSSTR;
+        pose_config_data.open ("DATA_"+seq+"_"+SEQUENCE+".txt");
+        String dt_seq = std::to_string(d_t);
+        error_data.open("max_error"+dt_seq+"_"+seq+"_"+SEQUENCE+".txt");
+
+        std::string filename_object = "/home/" +usernamestr +"/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/markers/Marker3.ppm";
+        img_corny = cv::imread(filename_object);
+
+        velocity_scaled.open("velocity_scaled.txt");
+        pos_scaled.open("pos_scaled.txt");
+
 	} else if(obj==_btn1){
 
         //state = getRobWorkStudio()->getState();
@@ -187,11 +202,25 @@ void SamplePlugin::btnPressed() {
         marker->moveTo(marker_motions[0], state);
         getRobWorkStudio()->setState(state);
 
-        cv::Mat im = getCameraImage();
-
         double f = 823.0; // focal length
         double z = 0.5; // distance from camera to point being tracked. 0.5 meters
-        std::vector<Vector2D<double> >uv_points = get_marker_pts(marker, cameraFrame, POINTS, z, f);
+        cv::Mat im = getCameraImage();
+
+        double x_diff = im.cols/2;
+        double y_diff = im.rows/2;
+        double offset0 = 0.05;
+        std::vector<Vector2D<double> >uv_points;
+        vector<Point2f> vision_points = getPoints(im);
+        //vector<Point2f> vision_points = getCornyPoints(img_corny,im);
+        for(auto vispt : vision_points){
+            Vector2D<double> tmp;
+            tmp[0] = vispt.x-x_diff;
+            tmp[1] = vispt.y-y_diff;
+            uv_points.push_back(tmp);
+            log().info() << "start point: " << tmp << endl;
+        }
+
+        //std::vector<Vector2D<double> >uv_points = get_marker_pts(marker, cameraFrame, POINTS, z, f);
         goal = uv_points;
         goal_single = uv_points[0];
         // now the image is drawed on while the center points are aquired, and then you can get the image with getImage().
@@ -212,6 +241,9 @@ void SamplePlugin::btnPressed() {
 
 void SamplePlugin::timer() {
 
+    clock_t t_start = clock();
+
+
     state = getRobWorkStudio()->getState();
 
     // Find the marker frame and cast it to a moveable frame
@@ -220,6 +252,7 @@ void SamplePlugin::timer() {
     cameraFrame = _wc->findFrame("Camera");
 
     cv::Mat im = getCameraImage();
+    cv::Mat imtmp = getCameraImage();
 
     // now the image is drawed on while the center points are aquired, and then you can get the image with getImage().
     //The point is the center point, which can be used for tracking center of picture
@@ -231,7 +264,7 @@ void SamplePlugin::timer() {
 //    cv::Point viewCenterPoint(cols/2,rows/2);
 //    cv::circle(imflip,viewCenterPoint, 4, cv::Scalar(0, 0, 0), 5);
 
-log().info() << "counter val: " << counter << "\n";
+//log().info() << "counter val: " << counter << "\n";
 //marker->moveTo(marker_motions[counter++], state);
 if(counter < marker_motions.size()){
 marker->setTransform(marker_motions[counter++], state); // both moveTo and setTransform is functions from the Movableframe class. They seem to do the same thing
@@ -246,19 +279,33 @@ getRobWorkStudio()->setState(state);
 double f = 823.0; // focal length
 double z = 0.5; // distance from camera to point being tracked. 0.5 meters
 
-    std::vector<Vector2D<double> >uv_points = get_marker_pts(marker, cameraFrame, POINTS, z, f);
-    //cv::Point ptt(uv_points[0][0]+(imflip.cols/2),uv_points[0][1]+(imflip.rows/2));
+double x_diff = imtmp.cols/2;
+double y_diff = imtmp.rows/2;
+    std::vector<Vector2D<double> >uv_points;
+    //vector<Point2f> vision_points = getCornyPoints(img_corny,imtmp);
+    vector<Point2f> vision_points = getPoints(imtmp);
+    for(auto vispt : vision_points){
+        Vector2D<double> tmp;
+        tmp[0] = vispt.x-x_diff;
+        tmp[1] = vispt.y-y_diff;
+        uv_points.push_back(tmp);
+    }
+    log().info() << "size of image x: " << imtmp.cols << " y: "<< imtmp.rows << endl;
+    //std::vector<Vector2D<double> >uv_points = get_marker_pts(marker, cameraFrame, POINTS, z, f);
+
+    log().info() <<  uv_points[0] << endl;
+    log().info() <<  uv_points[1] << endl;
+    log().info() <<  uv_points[2] << endl;
+
+    log().info() << "time image: " <<double(clock()-t_start)/CLOCKS_PER_SEC << endl;
+    clock_t t_start1 = clock();
+    cv::Point ptt(uv_points[0][0]+(imflip.cols/2),uv_points[0][1]+(imflip.rows/2));
 //    log().info() << "point::::: " << ptt << endl;
     //cv::circle(imflip,ptt, 4, cv::Scalar(255, 0, 0), 5);
 
     cv::Point midtpt(1024/2,768/2);
      //cv::circle(imflip,midtpt, 4, cv::Scalar(0, 0, 0), 5);
-
-
     vector<Jacobian> j_image = getImageJacobian(uv_points,f,z);
-//    log().info() << "stacked jac\n" << j_image[0] << endl;
-//    log().info() << "stacked jac\n" << j_image[1] << endl;
-//    log().info() << "stacked jac\n" << j_image[2] << endl;
 
      vector<Jacobian> j__z = calcZimage(j_image, device, q_init, state); // return  Jimage*S*J;
 
@@ -315,7 +362,7 @@ double z = 0.5; // distance from camera to point being tracked. 0.5 meters
 //    // formula: Z* = inverse(Z^T * Z) * Z^T
     Eigen::MatrixXd z_moore_penrose = z_image_transpose*LinearAlgebra::pseudoInverse(z_image*z_image_transpose);
 
-
+    double err =0;
     vector<Vector2D<double> > error_tracking;
     //vector<Vector2D<double> > error_tracking1;
     //error_tracking.push_back(goal_single - uv_points[0]);
@@ -323,8 +370,18 @@ double z = 0.5; // distance from camera to point being tracked. 0.5 meters
     for(int i = 0; i < POINTS; i++){
      // subtract the current point from the desired point
      error_tracking[i]  = goal[i] - uv_points[i];
-        //log().info() << "error " << error_tracking << endl;
+     //log().info() << error_tracking[i][0] << " - " << error_tracking[i][1] << endl;
+     err = abs(error_tracking[i][0]) + abs(error_tracking[i][1]);
+     if(max_error < err)
+        max_error = err;
 
+    }
+    
+    // When we are finisheded with a sequence
+    if(counter == marker_motions.size()){
+        //print_all_data(error_tracking);
+        error_data << max_error << endl;
+        close();
     }
 
     std::vector<Jacobian> jac;
@@ -336,7 +393,7 @@ double z = 0.5; // distance from camera to point being tracked. 0.5 meters
     }
     // cast the tracked point(s) to a Jacobian and push it to our vector of jacobian - it will hold the stacked Jacobians, if we have more than 1 tracking point
 
-    log().info() << "jac duv\n " << jac[0] << endl;
+ //   log().info() << "jac duv\n " << jac[0] << endl;
     Jacobian stacked_du_single(2,1);
     Jacobian stacked_du_three(6,1);
 
@@ -357,6 +414,7 @@ double z = 0.5; // distance from camera to point being tracked. 0.5 meters
 
     }
 
+
     Q dq;
     if(POINTS == 3){
     //Jacobian y(z_moore_penrose * jac[0].e());
@@ -364,15 +422,30 @@ double z = 0.5; // distance from camera to point being tracked. 0.5 meters
         Q dq_calculated(y.e());
         Q velocityLimits =  device->getVelocityLimits() ;
 
-        dq_calculated = dq_calculated*DT;
+        vector<double> scaled_velocity;
+        for(int i = 0; i < dq_calculated.size(); i++){
+        //scaled_velocity.push_back( = dq_calculated[i]/velocityLimits[i];
+        log().info() << "vel limit: " << velocityLimits << endl;
+        log().info() << "vel scaled: "<<dq_calculated[i]/velocityLimits[i] << endl;
+        }
+
+
+        dq_calculated = dq_calculated*(DT-TAU);
+
+
+
         for(int i = 0; i < dq_calculated.size();i++){
             if(dq_calculated[i] > 0)
                 dq_calculated[i] = std::min(dq_calculated[i],velocityLimits[i]);
             else
                 dq_calculated[i] = -(std::min(-dq_calculated[i],velocityLimits[i]));
-
-
         }
+
+        for(int i = 0; i < dq_calculated.size(); i++){
+            velocity_scaled << abs(dq_calculated[i]) << ";";
+        }
+        velocity_scaled << endl;
+
         Q temp = device->getQ(state);
         // set the deltaQ to current configuration + the calculated adjustment
         dq = temp;
@@ -382,7 +455,7 @@ double z = 0.5; // distance from camera to point being tracked. 0.5 meters
         Q dq_calculated(y.e());
         Q velocityLimits =  device->getVelocityLimits() ;
 
-        dq_calculated = dq_calculated/DT;
+        dq_calculated = dq_calculated*(DT-TAU);
         for(int i = 0; i < dq_calculated.size();i++){
             dq_calculated[i] = std::min(dq_calculated[i],velocityLimits[i]);
 
@@ -393,6 +466,22 @@ double z = 0.5; // distance from camera to point being tracked. 0.5 meters
         dq += dq_calculated;
 
     }
+
+    // BOUNDS WITH RESPECT TO LIMITS
+     auto limit = device->getBounds();
+     for(int i = 0; i < limit.first.size(); i++){
+         log().info() << "q: " << dq << endl;
+         //if(dq[i] < 0){
+         //pos_scaled << dq[i]/limit.first[i]  << ";";
+         //log().info() << "lim neg: " << dq[i]/limit.first[i] << endl;
+         //}else{
+         pos_scaled << dq[i]/limit.second[i] << ";";
+         log().info() << "lim pos: " << dq[i]/limit.second[i] << endl;
+         //}
+         //
+         //
+     }
+    pos_scaled << endl;
 
     // create Q vector for the chosen y
     //Q dq_calculated(y.e());
@@ -411,7 +500,6 @@ double z = 0.5; // distance from camera to point being tracked. 0.5 meters
 //        dq_calculated[i] = std::min(dq_calculated[i],velocityLimits[i]);
  //   }
 
-    // log().
 
     // get current configuration
 //    Q temp = device->getQ(state);
@@ -427,10 +515,52 @@ if(counter < marker_motions.size()){
     getRobWorkStudio()->setState(state);
 }
 
-    auto limit = device->getBounds();
+    log().info() << "time calc: " <<double(clock()-t_start1)/CLOCKS_PER_SEC << endl;
+
+    setCamera(imtmp); // set the image that we see in the workcell camera simulator
+}
+
+void SamplePlugin::print_all_data(vector<Vector2D<double> > track_error ){
+
+    // plotting format: tracking error, joint variables, position, RPY
+
+    // get joint variables and tool pose
+    Q q_vec = device->getQ(state);
+    //log().info() << q_vec << endl;
+
+    Transform3D<> t_P(device->baseTframe(cameraFrame, state).P());
+
+    RPY<> t_R(device->baseTframe(cameraFrame, state).R());
+    //log().info() << t_P << endl;
+    //log().info() << t_R << endl;
 
 
-    setCamera(imflip); // set the image that we see in the workcell camera simulator
+    // tracking error
+    double err;
+    for(int i = 0; i < track_error.size(); i++){
+        err += abs(track_error[i][0]) + abs(track_error[i][1]);
+    }
+    err = err/POINTS;
+    pose_config_data << err <<";";
+    log().info() << "err: " << err << endl;
+
+
+    // joint variables
+    for(int i = 0; i < q_vec.size(); i++){
+        pose_config_data << q_vec[i] << ";";
+    }
+    // position xyz
+    for(int i = 0; i < t_P.P().size(); i++){
+        pose_config_data << t_P.P()[i] <<";";
+        //log().info() << t_P.P()[i] << endl;
+    }
+    // RPY
+    for(int i = 0; i < t_R.size(); i++){
+        pose_config_data << t_R[i] << ";";
+        //log().info() << t_R[i] << endl;
+    }
+
+        pose_config_data << endl;
 }
 
 void SamplePlugin::stateChangedListener(const State& state) {
@@ -465,22 +595,24 @@ std::vector<Vector2D<double> > SamplePlugin::get_marker_pts(Frame *marker_frame,
 
 }
 
+// inspiration found at
+// https://stackoverflow.com/questions/20756968/reading-multiple-lines-from-a-file-using-getline
 std::vector<Transform3D<double> > SamplePlugin::readMotionFile(std::string file_name)
 {
     // here we can read the different motions files. Slow, normal fast files. Which one are loaded are hardcoded atm. in btn1 press
     RPY<double> rpy;
     Vector3D<double> xyz;
     std::vector<Transform3D<double> > motions; // Vector to be returned
-    string line;
+    string row;
     double x, y, z, R, P, Y;
 
-    ifstream file(file_name);
+    ifstream ifstr(file_name);
 
-    if(file.is_open())
+    if(ifstr.is_open())
     {
-        while(getline(file,line))
+        while(getline(ifstr,row))
         {
-            stringstream input_stream(line); // Create a stream lines
+            stringstream input_stream(row); // Create a stream lines
             // Read from motions file
             input_stream >> x >> y >> z >> R >> P >> Y;
 
@@ -491,14 +623,14 @@ std::vector<Transform3D<double> > SamplePlugin::readMotionFile(std::string file_
             motions.push_back(Transform3D<double>(xyz,rpy.toRotation3D()));
         }
 
-        file.close();
+        ifstr.close();
     }
 
     return motions;
 }
 
 void SamplePlugin::writeLog(int i){
-    log().info() << "size: " << i << endl;
+    //log().info() << "size: " << i << endl;
 }
 
 void SamplePlugin::setCamera(cv::Mat imflip){
@@ -614,3 +746,285 @@ void SamplePlugin::drawLine( Mat img)
         shift,
         tiplength*/);
 }
+
+vector<Point2f> SamplePlugin::getCornyPoints(Mat img_object, Mat img_scene)
+{
+    vector<Point2f> points;
+    // Load images
+    Mat descriptors_object;
+    std::vector<cv::KeyPoint> keypoints_object;
+
+
+    cv::Ptr<cv::Feature2D> detector;
+    detector = cv::xfeatures2d::SURF::create();
+    detector->detectAndCompute(img_object, cv::noArray(), keypoints_object, descriptors_object);
+
+
+
+    // Construct detector
+    //cv::Ptr<cv::Feature2D> detector;
+
+    // 1. / 2. Detect keypoints and compute descriptors
+    std::vector<cv::KeyPoint> keypoints_scene;
+    Mat descriptors_scene;
+    detector->detectAndCompute(img_scene, cv::noArray(), keypoints_scene, descriptors_scene);
+
+    // Draw and show keypoints
+    //cv::Mat img_keypoints_object;
+   // cv::Mat img_keypoints_scene;
+    //cv::drawKeypoints(img_object, keypoints_object, img_keypoints_object);
+    //cv::drawKeypoints(img_scene, keypoints_scene, img_keypoints_scene);
+    //cv::imshow("Keypoints 1", img_keypoints_object);
+    //cv::imshow("Keypoints 2", img_keypoints_scene);
+
+    // Construct matcher
+    cv::Ptr<cv::DescriptorMatcher> matcher;
+
+    matcher = cv::FlannBasedMatcher::create();
+
+    // 3. / 4. Match descriptor vectors
+    std::vector<cv::DMatch> matches;
+    matcher->match(descriptors_object, descriptors_scene, matches);
+
+    // Draw and show matches
+
+
+    double max_dist = 0; double min_dist = 100;
+
+      //-- Quick calculation of max and min distances between keypoints
+      for( int i = 0; i < descriptors_object.rows; i++ )
+      { double dist = matches[i].distance;
+        if( dist < min_dist )
+            min_dist = dist;
+        if( dist > max_dist )
+            max_dist = dist;
+      }
+
+       vector<DMatch> good_matches;
+       for( int i = 0; i < descriptors_object.rows; i++ )
+         { if( matches[i].distance < 3*min_dist )
+            { good_matches.push_back( matches[i]); }
+         }
+       cv::Mat img_matches;
+       cv::drawMatches(img_object, keypoints_object, img_scene, keypoints_scene, good_matches, img_matches);
+       //cv::imshow("Matches", img_matches);
+       //imwrite("../../Final project report/filtered_matches_hard_sequence.png",img_matches);
+
+       //-- Localize the object
+         std::vector<Point2f> obj;
+         std::vector<Point2f> scene;
+
+         for( int i = 0; i < good_matches.size(); i++ )
+         {
+           //-- Get the keypoints from the good matches
+           obj.push_back( keypoints_object[ good_matches[i].queryIdx ].pt );
+           scene.push_back( keypoints_scene[ good_matches[i].trainIdx ].pt );
+         }
+
+         Mat H = findHomography( obj, scene, CV_RANSAC );
+
+         //-- Get the corners from the image_1 ( the object to be "detected" )
+         std::vector<Point2f> obj_corners(4);
+         obj_corners[0] = cvPoint(0,0); obj_corners[1] = cvPoint( img_object.cols, 0 );
+         obj_corners[2] = cvPoint( img_object.cols, img_object.rows ); obj_corners[3] = cvPoint( 0, img_object.rows );
+         std::vector<Point2f> scene_corners(4);
+
+         perspectiveTransform( obj_corners, scene_corners, H);
+         Scalar color1 = Scalar(255,0,0);
+         Scalar color2 = Scalar(0,255,0);
+         Scalar color3 = Scalar(0,0,255);
+         Scalar color4 = Scalar(0,0,0);
+         //-- Draw lines between the corners (the mapped object in the scene - image_2 )
+         line( img_matches, scene_corners[0] + Point2f( img_object.cols, 0), scene_corners[1] + Point2f( img_object.cols, 0), Scalar(0, 255, 0), 4 );
+         line( img_matches, scene_corners[1] + Point2f( img_object.cols, 0), scene_corners[2] + Point2f( img_object.cols, 0), Scalar( 0, 255, 0), 4 );
+         line( img_matches, scene_corners[2] + Point2f( img_object.cols, 0), scene_corners[3] + Point2f( img_object.cols, 0), Scalar( 0, 255, 0), 4 );
+         line( img_matches, scene_corners[3] + Point2f( img_object.cols, 0), scene_corners[0] + Point2f( img_object.cols, 0), Scalar( 0, 255, 0), 4 );
+
+         //-- Show detected matches
+         Point2f first;// = scene_corners[0] + Point2f( img_object.cols, 0), scene_corners[1] + Point2f( img_object.cols, 0), Scalar(0, 255, 0), 4 );
+        first = scene_corners[0];
+         circle(img_scene,scene_corners[0],4,color1,-1,8,0);
+         circle(img_scene,scene_corners[1],4,color2,-1,8,0);
+         circle(img_scene,scene_corners[2],4,color3,-1,8,0);
+         circle(img_scene,scene_corners[3],4,color4,-1,8,0);
+         //imshow( "Good Matches & Object detection", img_matches );
+         points.push_back(scene_corners[0]);
+         points.push_back(scene_corners[1]);
+         points.push_back(scene_corners[2]);
+         imshow( "img", img_scene );
+         log().info() << "size of corny points " <<points.size() << endl;
+    return points;
+}
+
+vector<Point2f> SamplePlugin::getPoints(Mat src)
+{
+    Mat hsv;
+    Mat dummy;
+    cvtColor(src, src,CV_BGR2RGB);
+    cvtColor( src, hsv, CV_BGR2HSV);
+    Scalar blue_l(110,100,40);
+    Scalar blue_h(140,255,255);
+    //Scalar blue_h(114+10,157+100,60+100);
+    Scalar red_l(0,100,100);
+    Scalar red_h(20,255,255);
+    //Rect r(630,200,30,30);
+    //src(r) = 255;
+    Mat bw,rw;
+    vector<vector<Point> > contours_blue;
+    vector<vector<Point> > contours_red;
+    vector<Vec4i> hierarchy;
+    inRange(hsv,blue_l,blue_h,bw);
+    inRange(hsv,red_l,red_h,rw);
+    findContours( bw, contours_blue, hierarchy, CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, Point(0, 0) );
+    findContours( rw, contours_red, hierarchy, CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, Point(0, 0) );
+    vector<Moments> mu;
+    for(int i = 0; i < contours_blue.size();)
+    {
+        double density = (4*3.14* fabs(contourArea(cv::Mat(contours_blue[i]))))/pow(arcLength(contours_blue[i],false),2);
+        if(  density < 0.7 || fabs(contourArea(cv::Mat(contours_blue[i]))) < 2500)
+            contours_blue.erase(contours_blue.begin()+i);
+        else
+        {
+             mu.push_back(moments(contours_blue[i],false));
+            i++;
+        }
+    }
+    for(int i = 0; i < contours_red.size();)
+    {
+        double density = (4*3.14* fabs(contourArea(cv::Mat(contours_red[i]))))/pow(arcLength(contours_red[i],false),2);
+        if(  density < 0.63 || fabs(contourArea(cv::Mat(contours_red[i]))) < 2500)
+            contours_red.erase(contours_red.begin()+i);
+        else
+        {
+             mu.push_back(moments(contours_red[i],false));
+             i++;
+        }
+    }
+
+
+    //get centers
+    vector<Point2f> mc(contours_blue.size()+contours_red.size());
+    for(int i = 0;i < mu.size();i++)
+        mc[i] = Point2f(mu[i].m10/mu[i].m00,mu[i].m01/mu[i].m00);
+
+     Scalar color = Scalar( 255, 0, 0 );
+     Scalar color2 = Scalar( 0, 0, 255 );
+
+     Mat drawing = Mat::zeros( bw.size()+rw.size(), CV_8UC3 );
+
+     for( int i = 0; i< contours_blue.size(); i++ )
+     {
+        drawContours( src, contours_blue, i, color2, 2, 8, hierarchy, 0, Point() );
+        circle(src,mc[i],4,color2,-1,8,0);
+     }
+     for( int i = 0; i< contours_red.size(); i++ )
+     {
+        drawContours( src, contours_red, i, color, 2, 8, hierarchy, 0, Point() );
+        circle(src,mc[mc.size()-1],4,color,-1,8,0);
+     }
+     for(int i =0;i < mc.size()-1;i++)
+     {
+         cout << norm(mc[mc.size()-1]- mc[i]) << " << " <<  norm(mc[mc.size()-1]- mc[i+1]) << endl;
+         if(norm(mc[mc.size()-1]- mc[i]) < norm(mc[mc.size()-1]- mc[i+1]) || norm(mc[mc.size()-1]- mc[i+1]) == 0)
+         {
+             cout << "erase" << endl;
+             mc.erase(mc.begin()+i);
+             i--;
+         }
+         else
+             mc.erase(mc.begin()+i+1);
+
+     }
+    // cout << mc.size() << endl;
+
+     //circle(src,mc[0],4,0,-1,8,0);
+     circle(src,mc[1],4,0,-1,8,0);
+     Point2f mid((mc[0].x+mc[1].x)/2,(mc[0].y+mc[1].y)/2);
+     mc.push_back(mid);
+
+     circle(src,mc[0],4,0,-1,8,0);
+     circle(src,mc[1],4,0,-1,8,0);
+     circle(src,mc[2],4,0,-1,8,0);
+
+      imshow("src",src);
+     //imshow("blue"+str, drawing);
+    return mc;
+
+}
+/*
+vector<Point2f> SamplePlugin::getPoints(Mat src)
+{
+    Mat hsv;
+    Mat dummy;
+    cvtColor(src, src,CV_BGR2RGB);
+    cvtColor( src, hsv, CV_BGR2HSV);
+    Scalar blue_l(110,100,40);
+    Scalar blue_h(140,255,255);
+    //Scalar blue_h(114+10,157+100,60+100);
+    Scalar red_l(4-4,189-100,132-100);
+    Scalar red_h(4+10,189+100,132+120);
+    //Rect r(630,200,30,30);
+    //src(r) = 255;
+
+    Mat bw,rw;
+    vector<vector<Point> > contours_blue;
+    vector<vector<Point> > contours_red;
+    vector<Vec4i> hierarchy;
+    inRange(hsv,blue_l,blue_h,bw);
+    inRange(hsv,red_l,red_h,rw);
+    findContours( bw, contours_blue, hierarchy, CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, Point(0, 0) );
+    //findContours( rw, contours_red, hierarchy, CV_RETR_TREE, CV_CHAIN_APPROX_SIMPLE, Point(0, 0) );
+    vector<Moments> mu;
+    for(int i = 0; i < contours_blue.size();)
+    {
+        double density = (4*3.14* fabs(contourArea(cv::Mat(contours_blue[i]))))/pow(arcLength(contours_blue[i],false),2);
+        if(  density < 0.7 || fabs(contourArea(cv::Mat(contours_blue[i]))) < 2500)
+            contours_blue.erase(contours_blue.begin()+i);
+        else
+        {
+             mu.push_back(moments(contours_blue[i],false));
+            i++;
+        }
+    }
+    for(int i = 0; i < contours_red.size();)
+    {
+        double density = (4*3.14* fabs(contourArea(cv::Mat(contours_red[i]))))/pow(arcLength(contours_red[i],false),2);
+        if(  density < 0.63 || fabs(contourArea(cv::Mat(contours_red[i]))) < 2500)
+            contours_red.erase(contours_red.begin()+i);
+        else
+        {
+             mu.push_back(moments(contours_red[i],false));
+             i++;
+        }
+    }
+
+
+    //get centers
+    vector<Point2f> mc(contours_blue.size()+contours_red.size());
+    for(int i = 0;i < mu.size();i++)
+        mc[i] = Point2f(mu[i].m10/mu[i].m00,mu[i].m01/mu[i].m00);
+
+     Scalar color = Scalar( 255, 0, 0 );
+     Scalar color2 = Scalar( 0, 0, 255 );
+
+     Mat drawing = Mat::zeros( bw.size()+rw.size(), CV_8UC3 );
+
+     for( int i = 0; i< contours_blue.size(); i++ )
+     {
+        drawContours( src, contours_blue, i, color2, 2, 8, hierarchy, 0, Point() );
+        circle(src,mc[i],4,color2,-1,8,0);
+     }
+     for( int i = 0; i< contours_red.size(); i++ )
+     {
+        drawContours( src, contours_red, i, color2, 2, 8, hierarchy, 0, Point() );
+        circle(src,mc[contours_blue.size()+i],4,color2,-1,8,0);
+     }
+     cv::circle(src,{src.cols/2,src.rows/2}, 6, cv::Scalar(0, 0, 0), -1,8);
+
+      imshow("src",src);
+     //imshow("blue"+str, drawing);
+      log().info() << "size mc: " <<mc.size() << endl;
+    return mc;
+
+}
+*/

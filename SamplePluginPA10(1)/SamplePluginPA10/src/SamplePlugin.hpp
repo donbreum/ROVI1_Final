@@ -2,6 +2,9 @@
 #define SAMPLEPLUGIN_HPP
 
 #define POINTS 3
+#define SEQUENCE "Medium"
+#define d_t 1
+#define TAU 0.1 // this is for marker1
 
 // RobWork includes
 #include <rw/models/WorkCell.hpp>
@@ -41,6 +44,18 @@
 
 #include "Vision.hpp"
 #include <algorithm>    // std::min
+#include <fstream>
+#include <stdlib.h>
+
+#include "opencv2/imgcodecs.hpp"
+#include "opencv2/highgui.hpp"
+#include "opencv2/imgproc.hpp"
+#include "opencv2/features2d.hpp"
+#include "opencv2/xfeatures2d.hpp"
+#include <stdio.h>
+#include <iostream>
+#include "opencv2/core.hpp"
+#include "opencv2/calib3d.hpp"
 
 using namespace rw::common;
 using namespace rw::graphics;
@@ -88,7 +103,16 @@ public:
     Jacobian stack_jacobian(vector<Jacobian> j);
     std::vector<Vector2D<double> > get_marker_pts(Frame *marker_frame, Frame *camera_frame, int num_tracked_points,double z, double f);
     String usernamestr = "per";
-    double DT = 0.5;
+    double DT = d_t;
+    ofstream error_data;
+    ofstream pose_config_data;
+    ofstream velocity_scaled;
+    ofstream pos_scaled;
+    double max_error = 0;
+    void print_all_data(vector<Vector2D<double> > track_error);
+    vector<Point2f> getPoints(Mat src);
+    vector<Point2f> getCornyPoints(Mat img_object, Mat img_scene);
+    cv::Mat img_corny;
 private slots:
 
     void btnPressed();
