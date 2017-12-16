@@ -177,33 +177,6 @@ src/SamplePlugin.cpp.s:
 	$(MAKE) -f CMakeFiles/RoVi1PluginPA10.dir/build.make CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.s
 .PHONY : src/SamplePlugin.cpp.s
 
-src/Vision.o: src/Vision.cpp.o
-
-.PHONY : src/Vision.o
-
-# target to build an object file
-src/Vision.cpp.o:
-	$(MAKE) -f CMakeFiles/RoVi1PluginPA10.dir/build.make CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.o
-.PHONY : src/Vision.cpp.o
-
-src/Vision.i: src/Vision.cpp.i
-
-.PHONY : src/Vision.i
-
-# target to preprocess a source file
-src/Vision.cpp.i:
-	$(MAKE) -f CMakeFiles/RoVi1PluginPA10.dir/build.make CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.i
-.PHONY : src/Vision.cpp.i
-
-src/Vision.s: src/Vision.cpp.s
-
-.PHONY : src/Vision.s
-
-# target to generate assembly for a file
-src/Vision.cpp.s:
-	$(MAKE) -f CMakeFiles/RoVi1PluginPA10.dir/build.make CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.s
-.PHONY : src/Vision.cpp.s
-
 src/moc_SamplePlugin.o: src/moc_SamplePlugin.cpp.o
 
 .PHONY : src/moc_SamplePlugin.o
@@ -246,9 +219,6 @@ help:
 	@echo "... src/SamplePlugin.o"
 	@echo "... src/SamplePlugin.i"
 	@echo "... src/SamplePlugin.s"
-	@echo "... src/Vision.o"
-	@echo "... src/Vision.i"
-	@echo "... src/Vision.s"
 	@echo "... src/moc_SamplePlugin.o"
 	@echo "... src/moc_SamplePlugin.i"
 	@echo "... src/moc_SamplePlugin.s"

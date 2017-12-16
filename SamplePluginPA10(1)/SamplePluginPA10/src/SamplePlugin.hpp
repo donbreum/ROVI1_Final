@@ -1,9 +1,11 @@
 #ifndef SAMPLEPLUGIN_HPP
 #define SAMPLEPLUGIN_HPP
 
-#define POINTS 3
-#define SEQUENCE "Medium"
-#define d_t 1
+#define DEF_VISION 1 // set to 1 if you are using the vision tracking, other set to 0 for using the given marker coordinates
+#define DEF_MARKER 1 // set to the correct marker. Only marker 1 and 3 is implemented
+#define POINTS 3 // number of points to be tracked - need to be either 1 or 3
+#define SEQUENCE "Slow"
+#define d_t 0.15
 #define TAU 0.1 // this is for marker1
 
 // RobWork includes
@@ -42,7 +44,6 @@
 
 #include <string>
 
-#include "Vision.hpp"
 #include <algorithm>    // std::min
 #include <fstream>
 #include <stdlib.h>
@@ -71,6 +72,8 @@ using namespace rws;
 
 using namespace cv;
 
+using namespace std;
+
 class SamplePlugin: public rws::RobWorkStudioPlugin, private Ui::SamplePlugin
 {
 Q_OBJECT
@@ -86,33 +89,11 @@ public:
 
     virtual void initialize();
 
-    rw::math::VelocityScrew6D<double> calculateDeltaU(const rw::math::Transform3D<double>& baseTtool, const rw::math::Transform3D<double>& baseTtool_desired);
-    rw::math::Q algorithm1(const rw::models::Device::Ptr device, rw::kinematics::State state, const rw::kinematics::Frame* tool,
-                           const rw::math::Transform3D<double> baseTtool_desired, rw::math::Q q);
-
-    Vision *vis;
     void writeLog(int i);
     cv::Point lastPoint;
     void setCamera(cv::Mat img);
-    cv::Mat getCameraImage();
-    vector<Jacobian> getImageJacobian(vector<Vector2D<> > uv_pts, double f, double z);
-    vector<Jacobian> calcZimage(const vector<Jacobian> Jimage, rw::models::Device::Ptr device, const Q q, rw::kinematics::State state);
-    vector<Vector2D<double> > goal;
-    Vector2D<double> goal_single;
-    void drawLine( Mat img);
-    Jacobian stack_jacobian(vector<Jacobian> j);
-    std::vector<Vector2D<double> > get_marker_pts(Frame *marker_frame, Frame *camera_frame, int num_tracked_points,double z, double f);
-    String usernamestr = "per";
-    double DT = d_t;
-    ofstream error_data;
-    ofstream pose_config_data;
-    ofstream velocity_scaled;
-    ofstream pos_scaled;
-    double max_error = 0;
-    void print_all_data(vector<Vector2D<double> > track_error);
-    vector<Point2f> getPoints(Mat src);
-    vector<Point2f> getCornyPoints(Mat img_object, Mat img_scene);
-    cv::Mat img_corny;
+
+
 private slots:
 
     void btnPressed();
@@ -122,7 +103,7 @@ private slots:
 
 private:
     static cv::Mat toOpenCVImage(const rw::sensor::Image& img);
-    std::vector<Transform3D<double> > readMotionFile(std::string fileName);
+    std::vector<Transform3D<double> > read_file(std::string f);
     rw::models::Device::Ptr device;
     State state;
     int counter = 0;
@@ -130,6 +111,35 @@ private:
     Frame* cameraFrame;
     QTimer* _timer;
     rw::math::Q q_init;
+
+    cv::Mat getCameraImage();
+    std::vector<Jacobian> getImageJacobian(std::vector<Vector2D<> > uv_pts);
+    vector<Jacobian> calcZimage(const vector<Jacobian> Jimage, rw::models::Device::Ptr device, const Q q, rw::kinematics::State state);
+    vector<Vector2D<double> > goal;
+    Jacobian stack_jacobian(vector<Jacobian> j);
+    Jacobian stack_dudv(vector<Vector2D<double> >);
+    std::vector<Vector2D<double> > get_marker_pts(Frame *marker_frame, Frame *camera_frame, int num_tracked_points);
+    void print_all_data(vector<Vector2D<double> > track_error);
+    vector<Point2f> getPoints(Mat src);
+    vector<Point2f> getCornyPoints(Mat img_object, Mat img_scene);
+    std::vector<Vector2D<double> > get_tracking_pts(Mat cam_img, MovableFrame* marker);
+    vector<Vector2D<double> > find_tracking_error(std::vector<Vector2D<double> >uv_points);
+    void print_bound_scaled(Q qq);
+    Q calc_delta_q(vector<Jacobian> z_img,std::vector<Vector2D<double> >uv_points);
+
+    String usernamestr = "per";
+    double DT = d_t;
+    ofstream error_data;
+    ofstream pose_config_data;
+    ofstream velocity_scaled;
+    ofstream pos_scaled;
+    double max_error = 0;
+
+    cv::Mat img_corny;
+    int MARKER = DEF_MARKER;
+    int VISION = DEF_VISION;
+    double f = 823.0; // focal length
+    double z = 0.5; // distance from camera to point being tracked. 0.5 meters
 
 
     rw::models::WorkCell::Ptr _wc;

@@ -147,12 +147,6 @@
       <Unit filename="/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/SamplePlugin.ui">
          <Option target="RoVi1PluginPA10"/>
       </Unit>
-      <Unit filename="/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/Vision.cpp">
-         <Option target="RoVi1PluginPA10"/>
-      </Unit>
-      <Unit filename="/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/Vision.hpp">
-         <Option target="RoVi1PluginPA10"/>
-      </Unit>
       <Unit filename="/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/resources.qrc">
          <Option target="RoVi1PluginPA10"/>
       </Unit>

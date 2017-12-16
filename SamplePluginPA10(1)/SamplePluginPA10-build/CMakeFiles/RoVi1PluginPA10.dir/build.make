@@ -94,33 +94,9 @@ CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o.provides: CMakeFiles/RoVi1
 CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o.provides.build: CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o
 
 
-CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.o: CMakeFiles/RoVi1PluginPA10.dir/flags.make
-CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.o: /home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/Vision.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.o -c "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/Vision.cpp"
-
-CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/Vision.cpp" > CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.i
-
-CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/Vision.cpp" -o CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.s
-
-CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.o.requires:
-
-.PHONY : CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.o.requires
-
-CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.o.provides: CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.o.requires
-	$(MAKE) -f CMakeFiles/RoVi1PluginPA10.dir/build.make CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.o.provides.build
-.PHONY : CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.o.provides
-
-CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.o.provides.build: CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.o
-
-
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o: CMakeFiles/RoVi1PluginPA10.dir/flags.make
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o: src/moc_SamplePlugin.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o -c "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/src/moc_SamplePlugin.cpp"
 
 CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.i: cmake_force
@@ -144,7 +120,7 @@ CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o.provides.build: CMakeF
 
 CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o: CMakeFiles/RoVi1PluginPA10.dir/flags.make
 CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o: qrc_resources.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o -c "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/qrc_resources.cpp"
 
 CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.i: cmake_force
@@ -169,7 +145,6 @@ CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o.provides.build: CMakeFiles/Ro
 # Object files for target RoVi1PluginPA10
 RoVi1PluginPA10_OBJECTS = \
 "CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o" \
-"CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.o" \
 "CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o" \
 "CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o"
 
@@ -177,7 +152,6 @@ RoVi1PluginPA10_OBJECTS = \
 RoVi1PluginPA10_EXTERNAL_OBJECTS =
 
 /home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o
-/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.o
 /home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o
 /home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o
 /home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: CMakeFiles/RoVi1PluginPA10.dir/build.make
@@ -307,7 +281,7 @@ RoVi1PluginPA10_EXTERNAL_OBJECTS =
 /home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_imgproc3.so.3.2.0
 /home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: /opt/ros/kinetic/lib/libopencv_core3.so.3.2.0
 /home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so: CMakeFiles/RoVi1PluginPA10.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX shared module \"/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so\""
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX shared module \"/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/libs/Release/libRoVi1PluginPA10.so\""
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/RoVi1PluginPA10.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -316,7 +290,6 @@ CMakeFiles/RoVi1PluginPA10.dir/build: /home/per/Dropbox/tek_studie/1_kandidat/RO
 .PHONY : CMakeFiles/RoVi1PluginPA10.dir/build
 
 CMakeFiles/RoVi1PluginPA10.dir/requires: CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o.requires
-CMakeFiles/RoVi1PluginPA10.dir/requires: CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.o.requires
 CMakeFiles/RoVi1PluginPA10.dir/requires: CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o.requires
 CMakeFiles/RoVi1PluginPA10.dir/requires: CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o.requires
 

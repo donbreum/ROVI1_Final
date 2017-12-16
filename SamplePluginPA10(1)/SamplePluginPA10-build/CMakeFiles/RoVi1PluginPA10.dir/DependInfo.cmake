@@ -6,7 +6,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/qrc_resources.cpp" "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles/RoVi1PluginPA10.dir/qrc_resources.cpp.o"
   "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/SamplePlugin.cpp" "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles/RoVi1PluginPA10.dir/src/SamplePlugin.cpp.o"
-  "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10/src/Vision.cpp" "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles/RoVi1PluginPA10.dir/src/Vision.cpp.o"
   "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/src/moc_SamplePlugin.cpp" "/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/SamplePluginPA10(1)/SamplePluginPA10-build/CMakeFiles/RoVi1PluginPA10.dir/src/moc_SamplePlugin.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
