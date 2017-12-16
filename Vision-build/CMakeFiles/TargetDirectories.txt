@@ -1,3 +1,0 @@
-/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/Vision-build/CMakeFiles/edit_cache.dir
-/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/Vision-build/CMakeFiles/rebuild_cache.dir
-/home/per/Dropbox/tek_studie/1_kandidat/ROVI/Final_Project/Vision-build/CMakeFiles/ROVI_FinalVision.dir

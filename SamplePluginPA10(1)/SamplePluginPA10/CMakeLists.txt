@@ -44,8 +44,8 @@ ENDIF()
 MESSAGE("-- Build type: " ${CMAKE_BUILD_TYPE})
 
 # Use RobWork
-#SET(RobWork_DIR /home/per/RobWork/RobWork)#//cmake) # use on own machine
-SET(RobWork_DIR ${RW_ROOT}/cmake) # use on virtual machine
+SET(RobWork_DIR /home/per/RobWork/RobWork)#//cmake) # use on own machine
+#SET(RobWork_DIR ${RW_ROOT}/cmake) # use on virtual machine
 MESSAGE("-- RobWork root: " ${RW_ROOT})
 FIND_PACKAGE(RobWork REQUIRED)
 INCLUDE_DIRECTORIES( ${ROBWORK_INCLUDE_DIRS} )
@@ -53,14 +53,14 @@ LINK_DIRECTORIES( ${ROBWORK_LIBRARY_DIRS} )
 
 # Use RobWorkStudio
 MESSAGE("-- RobWorkStudio root: " ${RWSTUDIO_ROOT})
-#SET(RobWorkStudio_DIR ${RWSTUDIO_ROOT}//cmake) # use on virtual machine
-SET(RobWorkStudio_DIR /home/per/RobWork/RobWorkStudio//cmake) # use on own machine
+SET(RobWorkStudio_DIR ${RWSTUDIO_ROOT}//cmake) # use on virtual machine
+#SET(RobWorkStudio_DIR /home/per/RobWork/RobWorkStudio//cmake) # use on own machine
 FIND_PACKAGE(RobWorkStudio REQUIRED)
 INCLUDE_DIRECTORIES( ${ROBWORKSTUDIO_INCLUDE_DIRS} )
 LINK_DIRECTORIES( ${ROBWORKSTUDIO_LIBRARY_DIRS} )
 
 
-set(OpenCV_DIR /opt/ros/kinetic/share/OpenCV-3.2.0-dev) # use on own machine
+#set(OpenCV_DIR /opt/ros/kinetic/share/OpenCV-3.2.0-dev) # use on own machine
 
 # Use OpenCV 3
 find_package(OpenCV 3 REQUIRED)
